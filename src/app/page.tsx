@@ -25,9 +25,9 @@ export default function Home() {
 
       <About />
 
-      <FAQ />
+<Testimonials />
 
-      <Testimonials />
+<FAQ />
 
       <Contact />
 

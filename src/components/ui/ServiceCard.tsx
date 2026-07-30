@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { staggerItem } from "@/lib/animations";
 import { LucideIcon } from "lucide-react";
 
 interface ServiceCardProps {
@@ -18,58 +19,103 @@ export default function ServiceCard({
 }: ServiceCardProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{
-        duration: 0.6,
-        delay,
-      }}
-      whileHover={{
-        y: -12,
-      }}
-      className="
-      group
-      relative
-      overflow-hidden
-      rounded-3xl
-      border
-      border-purple-100
-      bg-white
-      p-8
-      shadow-sm
-      transition-all
-      duration-300
-      hover:shadow-[0_20px_60px_rgba(124,58,237,0.18)]
-      "
+      variants={staggerItem}
+transition={{
+  delay,
+}}
+     whileHover={{
+  y: -6,
+  scale: 1.02,
+}}
+     className="
+group
+relative
+flex
+h-full
+flex-col
+overflow-hidden
+rounded-[28px]
+sm:rounded-3xl
+border
+border-white/60
+bg-white/70
+backdrop-blur-xl
+p-6
+sm:p-7
+lg:p-8
+shadow-[0_20px_60px_rgba(124,58,237,0.08)]
+transition-all
+duration-300
+hover:shadow-[0_20px_60px_rgba(124,58,237,0.18)]
+"
     >
+      
       {/* Hover Glow */}
+<motion.div
+  initial={{ opacity: 0 }}
+  whileHover={{ opacity: 1 }}
+  transition={{ duration: 0.3 }}
+  className="
+    absolute
+    -inset-10
+    bg-gradient-to-r
+    from-violet-500/20
+    via-purple-500/20
+    to-fuchsia-500/20
+    blur-3xl
+    opacity-0
+    transition-opacity
+    duration-500
+    group-hover:opacity-100
+  "
+/>
       <div
-        className="
-        absolute
-        inset-0
-        bg-gradient-to-br
-        from-violet-100/0
-        via-purple-100/20
-        to-fuchsia-100/50
-        opacity-0
-        transition-opacity
-        duration-300
-        group-hover:opacity-100
-      "
-      />
+  className="
+    pointer-events-none
+    absolute
+    inset-x-10
+    top-0
+    h-px
+    bg-white
+    opacity-70
+  "
+/>
+{/* NEW Glass Reflection */}
+<div
+  className="
+    pointer-events-none
+    absolute
+    inset-0
+    bg-gradient-to-br
+    from-white/40
+    via-transparent
+    to-transparent
+    opacity-60
+  "
+/>
 
       <div className="relative z-10">
         <motion.div
-          whileHover={{
-            rotate: 8,
-            scale: 1.08,
-          }}
+          animate={{
+  y: [0, -4, 0],
+}}
+transition={{
+  duration: 3,
+  repeat: Infinity,
+  ease: "easeInOut",
+}}
+whileHover={{
+  rotate: 10,
+  scale: 1.15,
+}}
           className="
-          mb-7
-          flex
-          h-16
-          w-16
+          mb-5
+flex
+h-12
+w-12
+sm:h-16
+sm:w-16
+
           items-center
           justify-center
           rounded-2xl
@@ -79,14 +125,31 @@ export default function ServiceCard({
           text-violet-700
         "
         >
-          <Icon size={30} />
+          <Icon className="h-7 w-7 sm:h-8 sm:w-8" />
         </motion.div>
 
-        <h3 className="text-2xl font-bold text-gray-900">
+        <h3
+  className="
+    text-lg
+sm:text-2xl
+    font-bold
+    text-gray-900
+    sm:text-2xl
+  "
+>
           {title}
         </h3>
 
-        <p className="mt-4 leading-relaxed text-gray-600">
+        <p
+  className="
+    mt-3
+    text-sm
+    leading-7
+    text-gray-600
+    sm:mt-4
+    sm:text-base
+  "
+>
           {description}
         </p>
       </div>

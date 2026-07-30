@@ -49,7 +49,7 @@
   --color-primary-soft: var(--primary-soft);
 
   /* Glass */
-  --color-glass: var(--glass-bg);
+  --color-glass: var(--glass-background);
 
   /* Fonts */
   --font-sans: var(--font-geist-sans);
@@ -79,7 +79,7 @@ body {
       #f5f3ff 100%
     );
 
-  color: var(--foreground);
+  color:  #111827;
 
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 
@@ -132,7 +132,7 @@ body {
 ========================================= */
 
 ::selection {
-  background: var(--primary);
+  background: var(--cosmos-purple);
   color: #ffffff;
 }
 /* =========================================
@@ -154,7 +154,4 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #8b5cf6;
-}
-html {
-  scroll-behavior: smooth;
 }

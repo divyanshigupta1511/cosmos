@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
+import SectionHeading from "@/components/ui/SectionHeading";
+import FaqItem from "@/components/ui/FaqItem";
+import { fadeUp } from "@/lib/animations";
 
 const faqs = [
   {
@@ -28,325 +30,113 @@ const faqs = [
   },
 ];
 
+export default function FAQ() {
+  const [active, setActive] = useState<number | null>(0);
+
+  return (
+    <section
+      id="faq"
+      className="
+        relative
+        overflow-hidden
+        bg-gradient-to-b
+        from-[#080810]
+        via-[#0F0B1E]
+        to-[#080810]
+        px-4
+        py-20
+        sm:px-6
+        sm:py-24
+        lg:py-28
+        scroll-mt-32
+      "
+    >
+
+      {/* Background Glow */}
+      <motion.div
+        animate={{
+          scale: [1, 1.15, 1],
+          opacity: [0.4, 0.7, 0.4],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="
+          absolute
+          left-1/2
+          top-0
+          h-[260px]
+          w-[260px]
+          -translate-x-1/2
+          rounded-full
+          bg-violet-500/20
+          blur-[120px]
+          sm:h-[420px]
+          sm:w-[420px]
+          sm:blur-[180px]
+          lg:h-[500px]
+          lg:w-[500px]
+        "
+      />
+
+
+      <div
+        className="
+          relative
+          z-10
+          mx-auto
+          max-w-4xl
+        "
+      >
+
+        {/* Heading */}
+        <motion.div
+          {...fadeUp}
+          className="
+            mb-10
+            text-center
+            sm:mb-16
+          "
+        >
+
+          <SectionHeading
+            eyebrow="FAQ"
+            title="Frequently Asked"
+            highlight="Questions"
+            titleColor="text-white"
+            description="Everything you need to know before working with Cosmos BrandFlow."
+          />
+
+        </motion.div>
+
+
+        {/* FAQ Items */}
+        <div
+          className="
+            space-y-4
+            sm:space-y-5
+          "
+        >
+
+          {faqs.map((faq, index) => (
+            <FaqItem
+              key={faq.question}
+              question={faq.question}
+              answer={faq.answer}
+              isOpen={active === index}
+              onClick={() =>
+                setActive(active === index ? null : index)
+              }
+              delay={index * 0.1}
+            />
+          ))}
 
-export default function FAQ(){
+        </div>
 
-const [active,setActive]=useState<number | null>(0);
+      </div>
 
-
-return(
-
-<section
-className="
-relative
-overflow-hidden
-bg-white
-px-6
-py-28
-"
->
-
-
-{/* Glow */}
-
-<div
-className="
-absolute
-left-1/2
-top-20
--translate-x-1/2
-h-[400px]
-w-[400px]
-rounded-full
-bg-purple-200/40
-blur-[140px]
-"
-/>
-
-
-
-
-
-<div
-className="
-relative
-z-10
-mx-auto
-max-w-4xl
-"
->
-
-
-
-
-
-{/* Heading */}
-
-
-<motion.div
-
-initial={{
-opacity:0,
-y:30
-}}
-
-whileInView={{
-opacity:1,
-y:0
-}}
-
-viewport={{
-once:true
-}}
-
-className="
-mb-16
-text-center
-"
-
->
-
-
-<p
-className="
-text-sm
-uppercase
-tracking-[0.4em]
-text-purple-600
-"
->
-
-FAQ
-
-</p>
-
-
-
-<h2
-className="
-mt-4
-text-5xl
-font-bold
-text-gray-900
-md:text-6xl
-"
->
-
-Frequently Asked
-
-<span
-className="
-block
-bg-gradient-to-r
-from-purple-700
-via-purple-500
-to-purple-300
-bg-clip-text
-text-transparent
-"
->
-
-Questions
-
-</span>
-
-
-</h2>
-
-
-</motion.div>
-
-
-
-
-
-
-
-
-{/* Accordion */}
-
-
-
-<div
-className="
-space-y-5
-"
->
-
-
-{
-
-faqs.map((faq,index)=>(
-
-
-<motion.div
-
-key={index}
-
-initial={{
-opacity:0,
-y:20
-}}
-
-whileInView={{
-opacity:1,
-y:0
-}}
-
-viewport={{
-once:true
-}}
-
-transition={{
-delay:index*0.1
-}}
-
-className="
-rounded-3xl
-border
-border-purple-100
-bg-white
-shadow-[0_15px_40px_rgba(168,85,247,0.08)]
-overflow-hidden
-"
-
->
-
-
-<button
-
-onClick={()=>setActive(
-active===index ? null : index
-)}
-
-className="
-flex
-w-full
-items-center
-justify-between
-p-7
-text-left
-"
-
->
-
-
-<span
-className="
-text-lg
-font-semibold
-text-gray-900
-"
->
-
-{faq.question}
-
-</span>
-
-
-
-<ChevronDown
-
-size={22}
-
-className={`
-text-purple-600
-transition-transform
-duration-300
-
-${active===index ? "rotate-180" : ""}
-
-`}
-
-/>
-
-
-</button>
-
-
-
-
-
-<AnimatePresence>
-
-
-{
-
-active===index && (
-
-<motion.div
-
-initial={{
-height:0,
-opacity:0
-}}
-
-animate={{
-height:"auto",
-opacity:1
-}}
-
-exit={{
-height:0,
-opacity:0
-}}
-
-transition={{
-duration:0.3
-}}
-
-className="
-overflow-hidden
-"
-
->
-
-
-<p
-className="
-px-7
-pb-7
-leading-relaxed
-text-gray-600
-"
->
-
-{faq.answer}
-
-</p>
-
-
-</motion.div>
-
-)
-
-}
-
-
-</AnimatePresence>
-
-
-
-</motion.div>
-
-
-))
-
-}
-
-
-
-</div>
-
-
-
-
-</div>
-
-
-</section>
-
-
-)
-
+    </section>
+  );
 }

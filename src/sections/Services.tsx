@@ -4,6 +4,9 @@ import { motion } from "framer-motion";
 
 import SectionHeading from "@/components/ui/SectionHeading";
 import ServiceCard from "@/components/ui/ServiceCard";
+import SectionGlow from "@/components/ui/SectionGlow";
+import { fadeUp } from "@/lib/animations";
+import { staggerContainer } from "@/lib/animations";
 
 import {
   Palette,
@@ -12,7 +15,6 @@ import {
   Megaphone,
   Monitor,
   Users,
-  TrendingUp,
 } from "lucide-react";
 
 const services = [
@@ -34,12 +36,7 @@ const services = [
       "Premium content systems designed to communicate your brand story effectively.",
     icon: Video,
   },
-  {
-    title: "Reels Production",
-    description:
-      "High-impact short-form videos designed for attention and engagement.",
-    icon: TrendingUp,
-  },
+  
   {
     title: "Performance Marketing",
     description:
@@ -64,20 +61,33 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="relative overflow-hidden bg-white px-6 py-28"
+     className="
+relative
+overflow-hidden
+bg-gradient-to-b
+from-white
+via-purple-50/30
+to-white
+px-5
+sm:px-6
+lg:px-8
+py-20
+sm:py-24
+lg:py-28
+"
     >
-      {/* Background Glow */}
-      <div className="absolute left-1/2 top-20 h-[450px] w-[450px] -translate-x-1/2 rounded-full bg-purple-200/40 blur-[150px]" />
+       <SectionGlow />
 
       <div className="relative z-10 mx-auto max-w-7xl">
         {/* Heading */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="mb-20"
-        >
+  {...fadeUp}
+  className="
+mb-14
+sm:mb-16
+lg:mb-20
+"
+>
           <SectionHeading
             eyebrow="Our Expertise"
             title="Services That"
@@ -87,7 +97,21 @@ export default function Services() {
         </motion.div>
 
         {/* Cards */}
-        <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
+  <motion.div
+  variants={staggerContainer}
+  initial="hidden"
+  whileInView="show"
+  viewport={{ once: true }}
+  className="
+    grid
+    gap-6
+md:gap-7
+lg:gap-8
+    md:grid-cols-2
+    lg:grid-cols-3
+  "
+> 
+
           {services.map((service, index) => (
             <ServiceCard
               key={service.title}
@@ -97,8 +121,9 @@ export default function Services() {
               delay={index * 0.08}
             />
           ))}
-        </div>
-      </div>
+       
+      </motion.div>
+        </div>   
     </section>
   );
 }

@@ -1,31 +1,26 @@
 "use client";
 
+import Image from "next/image";
+
 export default function Logo() {
   return (
     <a
       href="#home"
-      className="
-      select-none
-      text-3xl
-      font-black
-      tracking-tight
-      text-gray-900
-      "
+      className="flex items-center transition-transform duration-300 hover:scale-105"
     >
-      Cosmos{" "}
-
-      <span
+      <Image
+        src="/logo.png"
+        alt="Cosmos BrandFlow"
+        width={220}
+        height={60}
+        priority
         className="
-        bg-gradient-to-r
-        from-violet-700
-        via-purple-600
-        to-fuchsia-500
-        bg-clip-text
-        text-transparent
+          h-12
+          w-auto
+          sm:h-14
+          lg:h-14
         "
-      >
-        BrandFlow
-      </span>
+      />
     </a>
   );
 }
