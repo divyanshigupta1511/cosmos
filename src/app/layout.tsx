@@ -128,7 +128,9 @@ category: "Business",
     "max-snippet": -1,
   },
 },
-
+verification: {
+  google: "NSeqh8c4k2M860W2MLNypj2Ri8wmdGGfNTPqlAmuM0E",
+},
 
 };
 
