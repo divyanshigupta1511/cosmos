@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import ScrollProgress from "@/components/ui/ScrollProgress";
 import CustomCursor from "@/components/ui/CustomCursor";
 import PageLoader from "@/components/ui/PageLoader";
@@ -187,20 +188,9 @@ className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     bg-white
   "
 >
-  <Script
-  src="https://www.googletagmanager.com/gtag/js?id=G-0218LHQ8YT"
-  strategy="afterInteractive"
-/>
+ 
 
-<Script id="google-analytics" strategy="afterInteractive">
-  {`
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
 
-    gtag('config', 'G-0218LHQ8YT');
-  `}
-</Script>
 <Script id="microsoft-clarity" strategy="afterInteractive">
   {`
     (function(c,l,a,r,i,t,y){
@@ -217,6 +207,7 @@ className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
   <CustomCursor />
 
   {children}
+  <GoogleAnalytics gaId="G-0218LHQ8YT" />
 </body>
 
 </html>
