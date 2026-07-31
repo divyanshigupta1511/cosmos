@@ -202,7 +202,12 @@ className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     })(window, document, "clarity", "script", "xuyk4n7sbp");
   `}
 </Script>
-
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify(structuredData),
+  }}
+/>
   
   <PageLoader />
   <ScrollProgress />
