@@ -1,51 +1,35 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion, useScroll, useSpring } from "framer-motion";
 
 export default function ScrollProgress() {
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const { scrollYProgress } = useScroll();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const totalHeight =
-        document.documentElement.scrollHeight -
-        document.documentElement.clientHeight;
-
-      const progress =
-        totalHeight > 0
-          ? (window.scrollY / totalHeight) * 100
-          : 0;
-
-      setScrollProgress(progress);
-    };
-
-    handleScroll();
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 140,
+    damping: 30,
+    restDelta: 0.001,
+  });
 
   return (
-    <div className="fixed left-0 top-0 z-[100] h-[3px] w-full pointer-events-none">
-      <motion.div
-        animate={{
-          width: `${scrollProgress}%`,
-        }}
-        transition={{
-          duration: 0.15,
-          ease: "easeOut",
-        }}
-        className="
-          h-full
-          bg-gradient-to-r
-          from-purple-500
-          via-fuchsia-500
-          to-white
-          shadow-[0_0_18px_rgba(168,85,247,0.9)]
-        "
-      />
-    </div>
+    <motion.div
+      style={{
+        scaleX,
+        transformOrigin: "0%",
+      }}
+      className="
+        fixed
+        top-0
+        left-0
+        right-0
+        z-[9999]
+        h-[3px]
+        bg-gradient-to-r
+        from-purple-500
+        via-fuchsia-500
+        to-white
+        shadow-[0_0_18px_rgba(168,85,247,0.9)]
+      "
+    />
   );
 }

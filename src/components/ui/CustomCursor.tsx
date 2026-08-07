@@ -19,25 +19,29 @@ export default function CustomCursor() {
     damping: 35,
   });
 
-  useEffect(() => {
-    // Disable on touch devices
-    if (
-      window.matchMedia("(pointer: fine)").matches
-    ) {
-      setEnabled(true);
-    }
+ useEffect(() => {
+  if (!window.matchMedia("(pointer: fine)").matches) return;
 
-    const move = (e: MouseEvent) => {
+  setEnabled(true);
+
+  let frame = 0;
+
+  const move = (e: MouseEvent) => {
+    cancelAnimationFrame(frame);
+
+    frame = requestAnimationFrame(() => {
       mouseX.set(e.clientX - 10);
       mouseY.set(e.clientY - 10);
-    };
+    });
+  };
 
-    window.addEventListener("mousemove", move);
+  window.addEventListener("mousemove", move, { passive: true });
 
-    return () => {
-      window.removeEventListener("mousemove", move);
-    };
-  }, [mouseX, mouseY]);
+  return () => {
+    cancelAnimationFrame(frame);
+    window.removeEventListener("mousemove", move);
+  };
+}, [mouseX, mouseY]);
 
   if (!enabled) return null;
 
