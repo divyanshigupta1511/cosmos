@@ -1,11 +1,9 @@
 "use client";
 
 import Container from "@/components/ui/Container";
-
 import HeroBackground from "@/components/ui/HeroBackground";
 import HeroContent from "@/components/ui/HeroContent";
 import HeroDashboard from "@/components/ui/HeroDashboard";
-
 
 export default function Hero() {
   return (
@@ -13,7 +11,6 @@ export default function Hero() {
       id="home"
       className="relative overflow-hidden"
     >
-
       <HeroBackground />
 
       <Container>
@@ -37,11 +34,8 @@ export default function Hero() {
           <HeroContent />
 
           <HeroDashboard />
-
         </div>
-
       </Container>
-
-    </section> 
+    </section>
   );
 }
