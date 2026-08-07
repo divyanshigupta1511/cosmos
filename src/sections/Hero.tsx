@@ -11,37 +11,29 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="
-        relative
-        overflow-hidden
-        bg-white
-        min-h-screen
-        scroll-mt-32
-      "
+      className="relative overflow-hidden"
     >
 
       <HeroBackground />
 
       <Container>
-
-       <div
-  className="
-    relative
-    z-10
-    grid
-    items-center
-    gap-12
-   pt-36
-pb-20
-md:pt-40
-md:pb-24
-   lg:gap-16
-lg:pt-44
-lg:pb-32
-    lg:grid-cols-2
-  "
->
-
+        <div
+          className="
+            relative
+            z-10
+            grid
+            items-center
+            gap-12
+            pt-36
+            pb-20
+            md:pt-40
+            md:pb-24
+            lg:grid-cols-2
+            lg:gap-16
+            lg:pt-44
+            lg:pb-32
+          "
+        >
           <HeroContent />
 
           <HeroDashboard />
@@ -50,6 +42,6 @@ lg:pb-32
 
       </Container>
 
-    </section>
+    </section> 
   );
 }

@@ -29,7 +29,7 @@ export default function HeroBadge() {
       <Sparkles size={16} />
 
       <span>
-        Strategic Branding & Business Consultancy — India
+        Brand Strategy • Websites • Marketing • Automation
       </span>
     </motion.div>
   );

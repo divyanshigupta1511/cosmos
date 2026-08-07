@@ -19,7 +19,7 @@ const stats = [
 
 export default function HeroStats() {
   return (
-    <div className="mt-14 grid grid-cols-3 gap-6">
+    <div className="mt-12 grid grid-cols-3 gap-6">
       {stats.map((item) => (
         <StatCard
           key={item.label}

@@ -64,9 +64,8 @@ style={{
 }}
 
       whileHover={{
-        y: -8,
-        scale: 1.02,
-      }}
+    y:-4
+}}
       transition={{
         duration: 0.8,
         delay: 0.3,
@@ -107,7 +106,7 @@ lg:p-7
       rotate: 360,
     }}
     transition={{
-      duration: 20,
+      duration: 35,
       repeat: Infinity,
       ease: "linear",
     }}
@@ -129,7 +128,7 @@ lg:p-7
       rotate: -360,
     }}
     transition={{
-      duration: 25,
+      duration: 40,
       repeat: Infinity,
       ease: "linear",
     }}
@@ -186,7 +185,7 @@ lg:p-7
         />
        
        {/* Floating Light Particles */}
-       {[...Array(10)].map((_, i) => (
+      {[...Array(4)].map((_, i) => (
   <motion.div
     key={i}
     animate={{
@@ -296,11 +295,8 @@ lg:p-7
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
               transition={{
-                duration: 2,
-                repeat: Infinity,
-                  
-                repeatType: "reverse",
-              }}
+    duration:2,
+}}
             />
             {[
   [5, 70],

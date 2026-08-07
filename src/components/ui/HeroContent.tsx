@@ -47,22 +47,46 @@ xl:text-7xl
 >
   We don't market brands.
 
+ <h1
+  className="
+    mt-2
+    text-5xl
+    font-bold
+    leading-tight
+    tracking-tight
+    text-gray-900
+    sm:text-6xl
+    lg:text-7xl
+  "
+>
+  We build{" "}
   <span
     className="
-      mt-2
-      block
       bg-gradient-to-r
       from-purple-700
-      via-purple-500
-      to-fuchsia-400
+      via-violet-500
+      to-fuchsia-500
       bg-clip-text
       text-transparent
     "
   >
-    We build brands
-    <br />
-    people remember.
+    brands
   </span>
+  <br />
+  people remember.
+</h1>
+  <p
+  className="
+    mt-6
+    max-w-xl
+    text-lg
+    leading-8
+    text-gray-600
+  "
+>
+  We help ambitious businesses build premium brands, high-converting
+  websites, and growth systems that create long-term impact.
+</p>
 </h1>
       <p
         className="
@@ -141,6 +165,13 @@ xl:text-7xl
   </motion.span>
 </a>
       </div>
+      <div className="mt-8 flex flex-wrap gap-6 text-sm text-gray-600">
+  <span>✓ Strategy First</span>
+  <span>✓ Premium Design</span>
+  <span>✓ Growth Focused</span>
+</div>
+
+<HeroStats />
 
       <HeroStats />
     </motion.div>

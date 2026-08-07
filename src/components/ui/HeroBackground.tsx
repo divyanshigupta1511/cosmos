@@ -40,7 +40,7 @@ export default function HeroBackground() {
           h-40
           w-40
           rounded-full
-          bg-violet-300/30
+          bg-violet-400/20
           blur-3xl
         "
       />
@@ -63,7 +63,7 @@ export default function HeroBackground() {
           h-52
           w-52
           rounded-full
-          bg-fuchsia-300/20
+          bg-fuchsia-400/15
           blur-3xl
         "
       />
@@ -85,7 +85,7 @@ export default function HeroBackground() {
           h-24
           w-24
           rounded-full
-          bg-purple-400/20
+          bg-purple-500/15
           blur-2xl
         "
       />
